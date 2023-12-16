@@ -97,6 +97,10 @@
       <artifactId>rxjava</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+    </dependency>
   </dependencies>
 
   <reporting>
