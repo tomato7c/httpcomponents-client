@@ -31,7 +31,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.hc.client5.http.auth.StandardAuthScheme;
-import org.apache.hc.client5.http.utils.Base64;
+import org.apache.hc.client5.http.utils.Base64$;
 
 public class BasicAuthenticationHandler extends AbstractAuthenticationHandler {
 
@@ -65,7 +65,7 @@ public class BasicAuthenticationHandler extends AbstractAuthenticationHandler {
     @Override
     String decodeChallenge(final String challenge) throws IllegalArgumentException {
         final byte[] bytes = challenge.getBytes(StandardCharsets.US_ASCII);
-        final Base64 codec = new Base64();
+        final Base64$ codec = Base64$.MODULE$;
         return new String(codec.decode(bytes), charset);
     }
 

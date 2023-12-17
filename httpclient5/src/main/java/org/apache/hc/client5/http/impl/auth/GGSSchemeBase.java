@@ -41,6 +41,7 @@ import org.apache.hc.client5.http.auth.InvalidCredentialsException;
 import org.apache.hc.client5.http.auth.MalformedChallengeException;
 import org.apache.hc.client5.http.auth.StandardAuthScheme;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
+import org.apache.hc.client5.http.utils.Base64$;
 import org.apache.hc.client5.http.utils.Base64;
 import org.apache.hc.core5.http.HttpHost;
 import org.apache.hc.core5.http.HttpRequest;
@@ -249,7 +250,7 @@ public abstract class GGSSchemeBase implements AuthScheme {
                 throw new AuthenticationException(gsse.getMessage());
             }
         case TOKEN_GENERATED:
-            final Base64 codec = new Base64(0);
+            final Base64$ codec = Base64$.MODULE$;
             final String tokenstr = new String(codec.encode(token));
             if (LOG.isDebugEnabled()) {
                 final HttpClientContext clientContext = HttpClientContext.adapt(context);

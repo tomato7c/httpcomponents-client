@@ -45,7 +45,7 @@ public class TestBase64 {
     public static final String EMOJI = "\uD83D\uDE15";
     public static final char SPACE = ' ';
 
-    private final Base64 target = new Base64();
+    private final Base64$ target = Base64$.MODULE$;
 
     @Test
     void nullHandling() {

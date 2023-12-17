@@ -50,7 +50,7 @@ import org.apache.hc.client5.http.auth.MalformedChallengeException;
 import org.apache.hc.client5.http.auth.StandardAuthScheme;
 import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
-import org.apache.hc.client5.http.utils.Base64;
+import org.apache.hc.client5.http.utils.Base64$;
 import org.apache.hc.client5.http.utils.ByteArrayBuilder;
 import org.apache.hc.core5.http.HttpHost;
 import org.apache.hc.core5.http.HttpRequest;
@@ -75,7 +75,7 @@ public class BasicScheme implements AuthScheme, Serializable {
     private final Map<String, String> paramMap;
     private transient Charset defaultCharset;
     private transient ByteArrayBuilder buffer;
-    private transient Base64 base64codec;
+    private transient Base64$ base64codec;
     private boolean complete;
 
     private UsernamePasswordCredentials credentials;
@@ -225,7 +225,7 @@ public class BasicScheme implements AuthScheme, Serializable {
         this.buffer.charset(charset);
         this.buffer.append(this.credentials.getUserName()).append(":").append(this.credentials.getUserPassword());
         if (this.base64codec == null) {
-            this.base64codec = new Base64();
+            this.base64codec = Base64$.MODULE$;
         }
         final byte[] encodedCreds = this.base64codec.encode(this.buffer.toByteArray());
         this.buffer.reset();

@@ -30,7 +30,7 @@ package org.apache.hc.client5.testing.auth;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.hc.client5.http.auth.StandardAuthScheme;
-import org.apache.hc.client5.http.utils.Base64;
+import org.apache.hc.client5.http.utils.Base64$;
 import org.apache.hc.core5.http.HttpException;
 import org.apache.hc.core5.http.ProtocolException;
 
@@ -51,7 +51,7 @@ public class BasicAuthTokenExtractor {
                 final String s = challengeResponse.substring(i + 1).trim();
                 try {
                     final byte[] credsRaw = s.getBytes(StandardCharsets.US_ASCII);
-                    final Base64 codec = new Base64();
+                    final Base64$ codec = Base64$.MODULE$;
                     return new String(codec.decode(credsRaw), StandardCharsets.US_ASCII);
                 } catch (final IllegalArgumentException ex) {
                     throw new ProtocolException("Malformed Basic credentials");
